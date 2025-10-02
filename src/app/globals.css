@@ -119,4 +119,132 @@
   body {
     @apply bg-background text-foreground;
   }
+  h1 {
+    @apply text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+  h4,
+  h5,
+  h6 {
+    font-size: 1rem;
+  }
+
+  /* Code styling */
+  code {
+    @apply bg-slate-800 p-2 rounded font-mono text-sm text-white w-full;
+  }
+  .hljs-comment,
+  .hljs-quote {
+    color: #616161;
+  }
+
+  .hljs-variable,
+  .hljs-template-variable,
+  .hljs-attribute,
+  .hljs-tag,
+  .hljs-regexp,
+  .hljs-link,
+  .hljs-name,
+  .hljs-selector-id,
+  .hljs-selector-class {
+    color: #f98181;
+  }
+
+  .hljs-number,
+  .hljs-meta,
+  .hljs-built_in,
+  .hljs-builtin-name,
+  .hljs-literal,
+  .hljs-type,
+  .hljs-params {
+    color: #fbbc88;
+  }
+
+  .hljs-string,
+  .hljs-symbol,
+  .hljs-bullet {
+    color: #b9f18d;
+  }
+
+  .hljs-title,
+  .hljs-section {
+    color: #faf594;
+  }
+
+  .hljs-keyword,
+  .hljs-selector-tag {
+    color: #70cff8;
+  }
+
+  .hljs-emphasis {
+    font-style: italic;
+  }
+
+  .hljs-strong {
+    font-weight: 700;
+  }
+
+  /* Table styling for Tiptap editor */
+  .tiptap table {
+    border-collapse: collapse;
+    margin: 0;
+    overflow: hidden;
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  .tiptap table td,
+  .tiptap table th {
+    border: 1px solid #cbd5e1; 
+    box-sizing: border-box;
+    min-width: 1em;
+    padding: 6px 8px;
+    position: relative;
+    vertical-align: top;
+  }
+
+  .tiptap table th {
+    background-color: #f1f5f9; /* slate-100 */
+    font-weight: bold;
+    text-align: left;
+    color: black;
+  }
+
+  .tiptap .selectedCell:after {
+    background: rgba(200, 200, 255, 0.4);
+    content: "";
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: 2;
+  }
+
+  .tiptap .column-resize-handle {
+    background-color: #6366f1; /* indigo-500 */
+    bottom: -2px;
+    pointer-events: none;
+    position: absolute;
+    right: -2px;
+    top: 0;
+    width: 4px;
+  }
+
+  .tiptap .tableWrapper {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+  }
+
+  .tiptap.resize-cursor {
+    cursor: col-resize;
+  }
 }
