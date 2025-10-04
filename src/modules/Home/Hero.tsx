@@ -56,27 +56,31 @@ const Hero = () => {
 
             {/* Social Links */}
             <div className="flex gap-4 pt-4">
-              <a
-                href="#"
+              <Link
+                href="https://github.com/himadree-chaudhury"
+                target="_blank"
                 className="p-3 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors"
                 aria-label="GitHub"
               >
                 <FaGithub className="h-5 w-5 text-slate-700 dark:text-slate-300" />
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/himadree-chaudhury/"
+                target="_blank"
                 className="p-3 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin className="h-5 w-5 text-slate-700 dark:text-slate-300" />
-              </a>
-              <a
-                href="#"
+              </Link>
+              {/* <a
+                href="mailto:himchy2001@gmail.com?subject=Hello&body=This%20is%20a%20test%20email."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors"
                 aria-label="Email"
               >
                 <Mail className="h-5 w-5 text-slate-700 dark:text-slate-300" />
-              </a>
+              </a> */}
             </div>
 
             {/* Stats */}

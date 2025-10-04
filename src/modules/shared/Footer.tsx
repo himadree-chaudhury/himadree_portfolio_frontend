@@ -1,135 +1,160 @@
-import React from "react";
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
-import Logo from "@/assets/logos/himadree-logo.svg";
-import Image from "next/image";
+import BackToTop from "@/components/atoms/BackToTop";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Github, Heart, Linkedin, Mail, Twitter } from "lucide-react";
 
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
 
-interface FooterProps {
-  sections?: Array<{
-    title: string;
-    links: Array<{ name: string; href: string }>;
-  }>;
-  description?: string;
-  socialLinks?: Array<{
-    icon: React.ReactElement;
-    href: string;
-    label: string;
-  }>;
-  copyright?: string;
-  legalLinks?: Array<{
-    name: string;
-    href: string;
-  }>;
-}
-
-const defaultSections = [
-  {
-    title: "Product",
-    links: [
-      { name: "Overview", href: "#" },
-      { name: "Pricing", href: "#" },
-      { name: "Marketplace", href: "#" },
-      { name: "Features", href: "#" },
+  const footerLinks = {
+    navigation: [
+      { label: "Home", href: "#home" },
+      { label: "About", href: "#about" },
+      { label: "Projects", href: "#projects" },
+      { label: "Services", href: "#services" },
+      { label: "Contact", href: "#contact" },
     ],
-  },
-  {
-    title: "Company",
-    links: [
-      { name: "About", href: "#" },
-      { name: "Team", href: "#" },
-      { name: "Blog", href: "#" },
-      { name: "Careers", href: "#" },
+    services: [
+      { label: "Web Development", href: "#web-dev" },
+      { label: "Mobile Apps", href: "#mobile" },
+      { label: "UI/UX Design", href: "#design" },
+      { label: "Consulting", href: "#consulting" },
     ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { name: "Help", href: "#" },
-      { name: "Sales", href: "#" },
-      { name: "Advertise", href: "#" },
-      { name: "Privacy", href: "#" },
+    resources: [
+      { label: "Blog", href: "#blog" },
+      { label: "Case Studies", href: "#case-studies" },
+      { label: "Privacy Policy", href: "#privacy" },
+      { label: "Terms of Service", href: "#terms" },
     ],
-  },
-];
+  };
 
-const defaultSocialLinks = [
-  { icon: <FaInstagram className="size-5" />, href: "#", label: "Instagram" },
-  { icon: <FaFacebook className="size-5" />, href: "#", label: "Facebook" },
-  { icon: <FaTwitter className="size-5" />, href: "#", label: "Twitter" },
-  { icon: <FaLinkedin className="size-5" />, href: "#", label: "LinkedIn" },
-];
+  const socialLinks = [
+    { icon: Github, url: "https://github.com/yourusername", label: "GitHub" },
+    {
+      icon: Linkedin,
+      url: "https://linkedin.com/in/yourusername",
+      label: "LinkedIn",
+    },
+    {
+      icon: Twitter,
+      url: "https://twitter.com/yourusername",
+      label: "Twitter",
+    },
+    { icon: Mail, url: "mailto:your.email@example.com", label: "Email" },
+  ];
 
-const defaultLegalLinks = [
-  { name: "Terms and Conditions", href: "#" },
-  { name: "Privacy Policy", href: "#" },
-];
-
-const Footer = ({
-  sections = defaultSections,
-  description = "I'm Himadree Chaudhury, a passionate developer dedicated to crafting beautiful and functional web experiences.",
-  socialLinks = defaultSocialLinks,
-  copyright = `© ${new Date().getFullYear()} Himadree Chaudhury. All rights reserved.`,
-  legalLinks = defaultLegalLinks,
-}: FooterProps) => {
   return (
-    <section className="py-8">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex w-full flex-col justify-between gap-10 lg:flex-row lg:items-start lg:text-left">
-          <div className="flex w-full flex-col justify-between gap-6 lg:items-start">
-            {/* Logo */}
-            <div className="flex items-center gap-2 lg:justify-start">
-              <Image
-                src={Logo}
-                alt="Himadree Chaudhury"
-                width={48}
-                height={48}
-                          />
-                <span className="text-xl font-bold">Himadree Chaudhury</span>
-            </div>
-            <p className="text-muted-foreground max-w-[70%] text-sm">
-              {description}
+    <footer>
+      {/* Main Footer Content */}
+      <div className="container mx-auto px-4 py-12">
+        {/* Newsletter Section */}
+        <div className="border-t border-b  py-8 mb-8">
+          <div className="max-w-md mx-auto text-center space-y-4">
+            <h4 className="text-2xl font-bold">Stay Updated</h4>
+            <p className="dark:text-slate-400 text-sm">
+              Subscribe to my newsletter for the latest updates and insights
             </p>
-            <ul className="text-muted-foreground flex items-center space-x-6">
-              {socialLinks.map((social, idx) => (
-                <li key={idx} className="hover:text-primary font-medium">
-                  <a href={social.href} aria-label={social.label}>
-                    {social.icon}
+            <form className="flex gap-2">
+              <Input type="email" placeholder="Enter your email" />
+              <Button type="submit">Subscribe</Button>
+            </form>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          {/* Brand Section */}
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Your Name
+            </h3>
+            <p className="dark:text-slate-400 text-sm leading-relaxed">
+              Full Stack Developer passionate about creating elegant solutions
+              to complex problems.
+            </p>
+            <div className="flex gap-3">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 border rounded-lg hover:bg-foreground hover:text-background transition-colors"
+                  aria-label={social.label}
+                >
+                  <social.icon className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Navigation Links */}
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Navigation</h4>
+            <ul className="space-y-2">
+              {footerLinks.navigation.map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={link.href}
+                    className="dark:text-slate-400 text-slate-600 hover:text-foreground transition-colors text-sm"
+                  >
+                    {link.label}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="grid w-full gap-6 md:grid-cols-3 lg:gap-20">
-            {sections.map((section, sectionIdx) => (
-              <div key={sectionIdx}>
-                <h3 className="mb-4 font-bold">{section.title}</h3>
-                <ul className="text-muted-foreground space-y-3 text-sm">
-                  {section.links.map((link, linkIdx) => (
-                    <li
-                      key={linkIdx}
-                      className="hover:text-primary font-medium"
-                    >
-                      <a href={link.href}>{link.name}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+
+          {/* Services Links */}
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Services</h4>
+            <ul className="space-y-2">
+              {footerLinks.services.map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={link.href}
+                    className="dark:text-slate-400 text-slate-600 hover:text-foreground transition-colors text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Resources Links */}
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Resources</h4>
+            <ul className="space-y-2">
+              {footerLinks.resources.map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={link.href}
+                    className="dark:text-slate-400 text-slate-600 hover:text-foreground transition-colors text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        <div className="text-muted-foreground mt-8 flex flex-col justify-between gap-4 border-t py-8 text-xs font-medium md:flex-row md:items-center md:text-left">
-          <p className="order-2 lg:order-1">{copyright}</p>
-          <ul className="order-1 flex flex-col gap-2 md:order-2 md:flex-row">
-            {legalLinks.map((link, idx) => (
-              <li key={idx} className="hover:text-primary">
-                <a href={link.href}> {link.name}</a>
-              </li>
-            ))}
-          </ul>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-slate-400 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="dark:text-slate-400 text-sm text-center md:text-left">
+              © {currentYear} Himadree Chaudhury. All rights reserved.
+            </p>
+            <p className="dark:text-slate-400 text-sm flex items-center gap-1">
+              Made with <Heart className="h-4 w-4 text-red-500 fill-red-500" />{" "}
+              using Next.js & Tailwind CSS
+            </p>
+          </div>
         </div>
       </div>
-    </section>
-  );
-};
 
-export { Footer };
+      {/* Back to Top Button */}
+      <BackToTop />
+    </footer>
+  );
+}
