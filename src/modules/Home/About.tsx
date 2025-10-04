@@ -43,10 +43,7 @@ export default function About() {
           <div className="space-y-8">
             <div>
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-                About{" "}
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Me
-                </span>
+                About Me
               </h2>
               <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mb-6"></div>
             </div>

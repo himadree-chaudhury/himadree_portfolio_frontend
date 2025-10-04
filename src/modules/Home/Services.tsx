@@ -1,14 +1,14 @@
-import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  Globe,
-  Smartphone,
-  Database,
-  Cloud,
-  ShoppingCart,
-  Layout,
   ArrowRight,
+  Cloud,
+  Database,
+  Globe,
+  Layout,
+  ShoppingCart,
+  Smartphone,
 } from "lucide-react";
+import React from "react";
 
 interface Service {
   icon: React.ElementType;
@@ -99,10 +99,7 @@ export default function Services() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-            Services I{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Offer
-            </span>
+            Services I Offer
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             Comprehensive solutions to bring your ideas to life

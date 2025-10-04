@@ -1,7 +1,6 @@
 "use client";
 
 import Logo from "@/assets/logos/himadree-logo.svg";
-import { ModeToggle } from "@/components/ModeToggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -36,6 +35,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+import { ModeToggle } from "@/modules/Dashboard/Sidebar/ModeToggle";
 import {
   ChevronDownIcon,
   FileTextIcon,

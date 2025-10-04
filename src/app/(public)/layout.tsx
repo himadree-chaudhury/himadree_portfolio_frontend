@@ -9,7 +9,7 @@ const PublicLayout = ({
   return (
     <div className="bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
       <Navbar />
-      <main className="min-h-screen ">{children}</main>
+      <main className="min-h-screen">{children}</main>
       <Footer />
     </div>
   );

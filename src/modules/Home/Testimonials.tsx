@@ -1,6 +1,5 @@
-import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Star, Quote } from "lucide-react";
+import { Quote, Star } from "lucide-react";
 
 interface Testimonial {
   name: string;
@@ -75,10 +74,7 @@ export default function Testimonials() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-            Client{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Testimonials
-            </span>
+            Client Testimonials
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             Don't just take my word for it - hear what my clients have to say

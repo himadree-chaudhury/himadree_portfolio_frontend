@@ -1,6 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
 
-
 interface Technology {
   name: string;
   icon: string;
@@ -101,10 +100,7 @@ export default function TechStack() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-            Tech{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Stack
-            </span>
+            Tech Stack
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             Technologies and tools I use to bring ideas to life
@@ -163,13 +159,11 @@ export default function TechStack() {
                   <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
                     {item.skill}
                   </span>
-                  <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
-                    {item.level}%
-                  </span>
+                  <span className="text-sm font-medium">{item.level}%</span>
                 </div>
                 <div className="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-3 overflow-hidden">
                   <div
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 h-full rounded-full transition-all duration-1000 ease-out"
+                    className="bg-gradient-to-r from-slate-400 to-stone-900 h-full rounded-full transition-all duration-1000 ease-out"
                     style={{ width: `${item.level}%` }}
                   />
                 </div>
