@@ -46,6 +46,7 @@ const Tiptap = ({
             class: "border-slate-900 dark:border-slate-100",
           },
         },
+        codeBlock: false,
       }),
       CodeBlockLowlight.configure({
         lowlight,

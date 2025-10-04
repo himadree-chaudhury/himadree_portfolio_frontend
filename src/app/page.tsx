@@ -1,4 +1,10 @@
+import { Navbar } from "@/modules/shared/navbar";
+
 const Home = () => {
-  return <div>This is a Home Page</div>;
+  return (
+    <div>
+      <Navbar />
+    </div>
+  );
 };
 export default Home;

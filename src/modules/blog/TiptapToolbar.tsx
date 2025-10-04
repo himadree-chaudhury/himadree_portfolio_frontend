@@ -1,16 +1,17 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 import { Toggle } from "@/components/ui/toggle";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
 import { Editor } from "@tiptap/react";
 import {
   AlignCenter,
@@ -44,7 +45,6 @@ import {
   Undo,
 } from "lucide-react";
 import { JSX } from "react";
-import { Button } from "@/components/ui/button";
 
 // tool definition
 type Tool = {
@@ -308,7 +308,7 @@ const TiptapToolbar = ({ editor }: { editor: Editor | null }) => {
               <span className="text-sm">{group.name}</span>
             </Button>
           </HoverCardTrigger>
-          <HoverCardContent side="bottom" className="flex flex-wrap gap-1 p-2">
+          <HoverCardContent side="top" className="flex flex-wrap gap-1 p-2">
             {group.tools.map((tool, j) => (
               <Tooltip key={j}>
                 <TooltipTrigger asChild>
