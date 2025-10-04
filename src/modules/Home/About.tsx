@@ -69,74 +69,60 @@ export default function About() {
                 developers.
               </p>
             </div>
-
-            {/* Achievements */}
-            <div className="grid grid-cols-2 gap-6 pt-6">
-              {achievements.map((achievement, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                    {achievement.number}
-                  </div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                    {achievement.label}
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Right Side - Highlights */}
-          <div className="space-y-6">
-            {highlights.map((highlight, index) => (
-              <Card
-                key={index}
-                className="group hover:shadow-xl transition-all duration-300 border-slate-200 dark:border-slate-800"
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl group-hover:scale-110 transition-transform duration-300">
-                      <highlight.icon className="h-6 w-6 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                        {highlight.title}
-                      </h3>
-                      <p className="text-slate-600 dark:text-slate-400">
-                        {highlight.description}
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
 
-            {/* Experience Timeline */}
-            <Card className="border-slate-200 dark:border-slate-800 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-800">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">
-                  Quick Facts
-                </h3>
-                <div className="space-y-3 text-slate-700 dark:text-slate-300">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                    <span>📍 Based in Chattogram, Bangladesh</span>
+          {/* Experience Timeline */}
+          <Card className="border-slate-200 dark:border-slate-800 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-800">
+            <CardContent className="p-6">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">
+                Quick Facts
+              </h3>
+              <div className="space-y-3 text-slate-700 dark:text-slate-300">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                  <span>📍 Based in Chattogram, Bangladesh</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                  <span>💼 Open to remote opportunities</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                  <span>🎓 Engineering Graduate</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                  <span>🌟 Open Source Contributor</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+        <div className="grid md:grid-cols-2 gap-5 mt-12">
+          {highlights.map((highlight, index) => (
+            <Card
+              key={index}
+              className="group hover:shadow-xl transition-all duration-300 border-slate-200 dark:border-slate-800"
+            >
+              <CardContent className="p-2">
+                <div>
+                  <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl group-hover:scale-110 transition-transform duration-300 w-fit mb-2">
+                    <highlight.icon className="h-6 w-6 text-white" />
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                    <span>💼 Open to remote opportunities</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                    <span>🎓 Engineering Graduate</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                    <span>🌟 Open Source Contributor</span>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                      {highlight.title}
+                    </h3>
+                    <p className="text-slate-600 dark:text-slate-400">
+                      {highlight.description}
+                    </p>
                   </div>
                 </div>
               </CardContent>
             </Card>
-          </div>
+          ))}
         </div>
       </div>
     </section>

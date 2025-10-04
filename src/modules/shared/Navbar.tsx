@@ -15,7 +15,6 @@ import {
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import {
@@ -171,10 +170,10 @@ export interface NavbarProps extends React.HTMLAttributes<HTMLElement> {
 
 // Default navigation links with icons
 const defaultNavigationLinks: NavbarNavItem[] = [
-  { href: "#", label: "Dashboard", icon: HomeIcon, active: true },
-  { href: "#", label: "Projects", icon: LayersIcon },
-  { href: "#", label: "Documentation", icon: FileTextIcon },
-  { href: "#", label: "Team", icon: UsersIcon },
+  { href: "/", label: "Home", icon: HomeIcon },
+  { href: "/projects", label: "Projects", icon: LayersIcon },
+  { href: "/blogs", label: "Blogs", icon: FileTextIcon },
+  { href: "/case-studies", label: "Case-Studies", icon: UsersIcon },
 ];
 
 // Default language options
@@ -311,9 +310,6 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
                   width={48}
                   height={48}
                 />
-                <span className="hidden font-bold text-xl sm:inline-block">
-                  Himadree Chaudhury
-                </span>
               </Link>
               {/* Desktop navigation - icon only */}
               {!isMobile && (
@@ -326,13 +322,8 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
                           <NavigationMenuItem key={link.label}>
                             <Tooltip>
                               <TooltipTrigger asChild>
-                                <NavigationMenuLink
-                                  href={link.href}
-                                  onClick={(e) => {
-                                    e.preventDefault();
-                                    if (onNavItemClick && link.href)
-                                      onNavItemClick(link.href);
-                                  }}
+                                <Link
+                                  href={link.href ?? "/"}
                                   className={cn(
                                     "flex size-8 items-center justify-center p-1.5 rounded-md transition-colors hover:bg-accent hover:text-accent-foreground cursor-pointer",
                                     link.active &&
@@ -341,7 +332,7 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
                                 >
                                   <Icon size={20} aria-hidden={true} />
                                   <span className="sr-only">{link.label}</span>
-                                </NavigationMenuLink>
+                                </Link>
                               </TooltipTrigger>
                               <TooltipContent
                                 side="bottom"
