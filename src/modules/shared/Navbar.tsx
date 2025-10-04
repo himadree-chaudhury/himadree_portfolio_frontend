@@ -1,5 +1,6 @@
 "use client";
 
+import Logo from "@/assets/logos/himadree-logo.svg";
 import { ModeToggle } from "@/components/ModeToggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -42,45 +43,12 @@ import {
   GlobeIcon,
   HomeIcon,
   LayersIcon,
-  MoonIcon,
-  SunIcon,
   UsersIcon,
 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import * as React from "react";
 import { useEffect, useId, useRef, useState } from "react";
-
-// Simple logo component for the navbar
-const Logo = (props: React.SVGAttributes<SVGElement>) => {
-  return (
-    <svg
-      width="1em"
-      height="1em"
-      viewBox="0 0 324 323"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <rect
-        x="88.1023"
-        y="144.792"
-        width="151.802"
-        height="36.5788"
-        rx="18.2894"
-        transform="rotate(-38.5799 88.1023 144.792)"
-        fill="currentColor"
-      />
-      <rect
-        x="85.3459"
-        y="244.537"
-        width="151.802"
-        height="36.5788"
-        rx="18.2894"
-        transform="rotate(-38.5799 85.3459 244.537)"
-        fill="currentColor"
-      />
-    </svg>
-  );
-};
 
 // Hamburger icon component
 const HamburgerIcon = ({
@@ -115,32 +83,10 @@ const HamburgerIcon = ({
   </svg>
 );
 
-// Theme Toggle Component
-const ThemeToggle = ({
-  onThemeChange,
-}: {
-  onThemeChange?: (theme: "light" | "dark") => void;
-}) => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    if (onThemeChange) onThemeChange(newTheme);
-  };
-
-  return (
-    <div>
-      <ModeToggle/>
-      <span className="sr-only">Toggle theme</span>
-    </div>
-  );
-};
-
 // User Menu Component
 const UserMenu = ({
-  userName = "John Doe",
-  userEmail = "john@example.com",
+  userName,
+  userEmail,
   userAvatar,
   onItemClick,
 }: {
@@ -158,10 +104,11 @@ const UserMenu = ({
         <Avatar className="h-6 w-6">
           <AvatarImage src={userAvatar} alt={userName} />
           <AvatarFallback className="text-xs">
-            {userName
-              .split(" ")
-              .map((n) => n[0])
-              .join("")}
+            {userName &&
+              userName
+                .split(" ")
+                .map((n) => n[0])
+                .join("")}
           </AvatarFallback>
         </Avatar>
         <ChevronDownIcon className="h-3 w-3 ml-1" />
@@ -181,11 +128,8 @@ const UserMenu = ({
       <DropdownMenuItem onClick={() => onItemClick?.("profile")}>
         Profile
       </DropdownMenuItem>
-      <DropdownMenuItem onClick={() => onItemClick?.("settings")}>
-        Settings
-      </DropdownMenuItem>
-      <DropdownMenuItem onClick={() => onItemClick?.("billing")}>
-        Billing
+      <DropdownMenuItem onClick={() => onItemClick?.("dashboard")}>
+        Dashboard
       </DropdownMenuItem>
       <DropdownMenuSeparator />
       <DropdownMenuItem onClick={() => onItemClick?.("logout")}>
@@ -196,7 +140,7 @@ const UserMenu = ({
 );
 
 // Types
-export interface Navbar06NavItem {
+export interface NavbarNavItem {
   href?: string;
   label: string;
   icon: React.ComponentType<{
@@ -207,16 +151,14 @@ export interface Navbar06NavItem {
   active?: boolean;
 }
 
-export interface Navbar06Language {
+export interface NavbarLanguage {
   value: string;
   label: string;
 }
 
-export interface Navbar06Props extends React.HTMLAttributes<HTMLElement> {
-  logo?: React.ReactNode;
-  logoHref?: string;
-  navigationLinks?: Navbar06NavItem[];
-  languages?: Navbar06Language[];
+export interface NavbarProps extends React.HTMLAttributes<HTMLElement> {
+  navigationLinks?: NavbarNavItem[];
+  languages?: NavbarLanguage[];
   defaultLanguage?: string;
   userName?: string;
   userEmail?: string;
@@ -228,7 +170,7 @@ export interface Navbar06Props extends React.HTMLAttributes<HTMLElement> {
 }
 
 // Default navigation links with icons
-const defaultNavigationLinks: Navbar06NavItem[] = [
+const defaultNavigationLinks: NavbarNavItem[] = [
   { href: "#", label: "Dashboard", icon: HomeIcon, active: true },
   { href: "#", label: "Projects", icon: LayersIcon },
   { href: "#", label: "Documentation", icon: FileTextIcon },
@@ -236,7 +178,7 @@ const defaultNavigationLinks: Navbar06NavItem[] = [
 ];
 
 // Default language options
-const defaultLanguages: Navbar06Language[] = [
+const defaultLanguages: NavbarLanguage[] = [
   { value: "en", label: "En" },
   { value: "es", label: "Es" },
   { value: "fr", label: "Fr" },
@@ -244,17 +186,15 @@ const defaultLanguages: Navbar06Language[] = [
   { value: "ja", label: "Ja" },
 ];
 
-export const Navbar = React.forwardRef<HTMLElement, Navbar06Props>(
+export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
   (
     {
       className,
-      logo = <Logo />,
-      logoHref = "#",
       navigationLinks = defaultNavigationLinks,
       languages = defaultLanguages,
       defaultLanguage = "en",
-      userName = "John Doe",
-      userEmail = "john@example.com",
+      userName,
+      userEmail,
       userAvatar,
       onNavItemClick,
       onLanguageChange,
@@ -361,15 +301,20 @@ export const Navbar = React.forwardRef<HTMLElement, Navbar06Props>(
             )}
             <div className="flex items-center gap-6">
               {/* Logo */}
-              <button
-                onClick={(e) => e.preventDefault()}
+              <Link
+                href="/"
                 className="flex items-center space-x-2 text-primary hover:text-primary/90 transition-colors cursor-pointer"
               >
-                <div className="text-2xl">{logo}</div>
+                <Image
+                  src={Logo}
+                  alt="Himadree Chaudhury"
+                  width={48}
+                  height={48}
+                />
                 <span className="hidden font-bold text-xl sm:inline-block">
                   Himadree Chaudhury
                 </span>
-              </button>
+              </Link>
               {/* Desktop navigation - icon only */}
               {!isMobile && (
                 <NavigationMenu className="flex">
@@ -417,7 +362,10 @@ export const Navbar = React.forwardRef<HTMLElement, Navbar06Props>(
           {/* Right side */}
           <div className="flex items-center gap-2">
             {/* Theme toggle */}
-            <ThemeToggle onThemeChange={onThemeChange} />
+            <div>
+              <ModeToggle />
+              <span className="sr-only">Toggle theme</span>
+            </div>
             {/* Language selector */}
             <Select
               defaultValue={defaultLanguage}
@@ -442,12 +390,18 @@ export const Navbar = React.forwardRef<HTMLElement, Navbar06Props>(
               </SelectContent>
             </Select>
             {/* User menu */}
-            <UserMenu
-              userName={userName}
-              userEmail={userEmail}
-              userAvatar={userAvatar}
-              onItemClick={onUserItemClick}
-            />
+            {userEmail ? (
+              <UserMenu
+                userName={userName}
+                userEmail={userEmail}
+                userAvatar={userAvatar}
+                onItemClick={onUserItemClick}
+              />
+            ) : (
+              <Button variant="default" size="sm" asChild>
+                <Link href="/login">Login</Link>
+              </Button>
+            )}
           </div>
         </div>
       </header>
@@ -457,4 +411,4 @@ export const Navbar = React.forwardRef<HTMLElement, Navbar06Props>(
 
 Navbar.displayName = "Navbar";
 
-export { HamburgerIcon, Logo, ThemeToggle, UserMenu };
+export { HamburgerIcon, UserMenu };
