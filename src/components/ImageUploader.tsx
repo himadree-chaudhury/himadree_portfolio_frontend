@@ -80,6 +80,7 @@ export default function ImageUploader({
               <Button
                 variant="outline"
                 className="mt-4"
+                type="button"
                 onClick={openFileDialog}
               >
                 <UploadIcon
@@ -115,7 +116,6 @@ export default function ImageUploader({
           <span>{errors[0]}</span>
         </div>
       )}
-
     </div>
   );
 }
