@@ -36,10 +36,10 @@ const data = {
       icon: SquareTerminal,
       isActive: true,
       items: [
-        {
-          title: "Manage",
-          url: "#",
-        },
+        // {
+        //   title: "Manage",
+        //   url: "#",
+        // },
         {
           title: "Create",
           url: "/dashboard/projects/create",
@@ -52,10 +52,10 @@ const data = {
       isActive: true,
       icon: RssIcon,
       items: [
-        {
-          title: "Manage",
-          url: "#",
-        },
+        // {
+        //   title: "Manage",
+        //   url: "#",
+        // },
         {
           title: "Create",
           url: "/dashboard/blog/create",

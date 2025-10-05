@@ -21,6 +21,7 @@ import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import z from "zod";
 import Tiptap from "./Tiptap";
+import { useRouter } from "next/router";
 
 const blogSchema = z.object({
   title: z
@@ -44,6 +45,9 @@ const CreateBlog = () => {
     { id: 1, name: "React" },
   ];
 
+     const router = useRouter();
+    
+    
   const form = useForm<z.infer<typeof blogSchema>>({
     resolver: zodResolver(blogSchema),
     defaultValues: {
@@ -76,7 +80,8 @@ const CreateBlog = () => {
           credentials: "include",
         }
       );
-      if (!response.ok) throw new Error("Failed to create blog");
+        if (!response.ok) throw new Error("Failed to create blog");
+        router.push("/blogs");
     } catch (error) {
       console.log(error);
     }

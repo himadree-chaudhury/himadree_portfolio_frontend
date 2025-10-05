@@ -1,6 +1,11 @@
+import CreateProject from "@/modules/project/CreateProject";
+
 const CreateProjectPage = () => {
     return (
-        <div>This is a CreateProjectPage</div>
+        <div>
+
+            <CreateProject/>
+        </div>
     );
 };
 export default CreateProjectPage;
