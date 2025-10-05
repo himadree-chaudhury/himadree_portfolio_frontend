@@ -20,7 +20,22 @@ const BlogPage = async () => {
     <div>
       <h1 className="my-5">Blog Posts</h1>
       <div className="grid grid-cols-3 gap-4 mb-6">
-        {blogs && blogs.map((blog) => <BlogCard key={blog.id} blog={blog} />)}
+        {blogs &&
+          blogs.map(
+            (blog: {
+              id: number;
+              title: string;
+              slug: string;
+              poster: string;
+              content: string;
+              excerpt: string;
+              published: boolean;
+              authorId: number;
+              views: number;
+              createdAt: string;
+              updatedAt: string;
+            }) => <BlogCard key={blog.id} blog={blog} />
+          )}
       </div>
     </div>
   );

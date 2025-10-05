@@ -17,11 +17,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { FileMetadata } from "@/hooks/use-file-upload";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "sonner";
 import z from "zod";
 import Tiptap from "./Tiptap";
-import { useRouter } from "next/router";
 
 const blogSchema = z.object({
   title: z
@@ -41,13 +42,10 @@ const CreateBlog = () => {
   const [poster, setPoster] = useState<(File | FileMetadata) | null>(null);
   const [galleries, setGalleries] = useState<(File | FileMetadata)[] | []>([]);
 
-  const categories = [
-    { id: 1, name: "React" },
-  ];
+  const categories = [{ id: 1, name: "React" }];
 
-     const router = useRouter();
-    
-    
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof blogSchema>>({
     resolver: zodResolver(blogSchema),
     defaultValues: {
@@ -72,6 +70,7 @@ const CreateBlog = () => {
     console.log(blogData);
 
     try {
+      const toastId = toast.loading("Creating blog...");
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_API}/blog/create`,
         {
@@ -80,10 +79,14 @@ const CreateBlog = () => {
           credentials: "include",
         }
       );
-        if (!response.ok) throw new Error("Failed to create blog");
-        router.push("/blogs");
+      if (!response.ok) {
+        toast.error("Failed to create blog", { id: toastId });
+      }
+      toast.success("Blog created successfully", { id: toastId });
+      router.push("/blogs");
     } catch (error) {
-      console.log(error);
+        toast.error("An error occurred while creating the blog");
+        console.error("Error creating blog:", error);
     }
   };
 

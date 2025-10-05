@@ -2,7 +2,18 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function BlogCard({ blog }: { blog: any }) {
+export default function BlogCard({
+  blog,
+}: {
+  blog: {
+    title: string;
+    slug: string;
+    poster: string;
+    content: string;
+    authorId: number;
+    views: number;
+  };
+}) {
   return (
     <Link
       href={`/blogs/${blog.slug}`}
@@ -29,9 +40,9 @@ export default function BlogCard({ blog }: { blog: any }) {
             {blog.title}
           </h3>
 
-          <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
+          {/* <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
             {blog.excerpt}
-          </p>
+          </p> */}
 
           <div className="flex items-center justify-between mb-4">
             {/* <div className="flex items-center gap-2">

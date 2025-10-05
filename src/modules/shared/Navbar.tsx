@@ -38,7 +38,6 @@ import { cn } from "@/lib/utils";
 import { ModeToggle } from "@/modules/shared/ModeToggle";
 import {
   ChevronDownIcon,
-  FileTextIcon,
   GlobeIcon,
   HomeIcon,
   LayersIcon,
@@ -124,16 +123,16 @@ const UserMenu = ({
         </div>
       </DropdownMenuLabel>
       <DropdownMenuSeparator />
-      <DropdownMenuItem onClick={() => onItemClick?.("profile")}>
+      {/* <DropdownMenuItem onClick={() => onItemClick?.("profile")}>
         Profile
-      </DropdownMenuItem>
-      <DropdownMenuItem onClick={() => onItemClick?.("dashboard")}>
+      </DropdownMenuItem> */}
+      <DropdownMenuItem onClick={() => onItemClick?.("/dashboard")}>
         Dashboard
       </DropdownMenuItem>
       <DropdownMenuSeparator />
-      <DropdownMenuItem onClick={() => onItemClick?.("logout")}>
+      {/* <DropdownMenuItem onClick={() => onItemClick?.("logout")}>
         Log out
-      </DropdownMenuItem>
+      </DropdownMenuItem> */}
     </DropdownMenuContent>
   </DropdownMenu>
 );
@@ -172,7 +171,7 @@ const defaultNavigationLinks: NavbarNavItem[] = [
   { href: "/", label: "Home", icon: HomeIcon },
   { href: "/projects", label: "Projects", icon: LayersIcon },
   { href: "/blogs", label: "Blogs", icon: RssIcon },
-  { href: "/case-studies", label: "Case-Studies", icon: FileTextIcon },
+  // { href: "/case-studies", label: "Case-Studies", icon: FileTextIcon },
 ];
 
 // Default language options

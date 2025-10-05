@@ -6,7 +6,6 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 interface Blog {
   id: number;
@@ -30,9 +29,8 @@ interface Blog {
       name: string;
     };
   }>;
-  tags: Array<any>;
-  galleries: Array<any>;
-  comments: Array<any>;
+  tags: Array<string | null>;
+  galleries: Array<string | null>;
 }
 
 interface BlogDetailsCardProps {
@@ -78,7 +76,6 @@ const BlogDetailsCard = ({ blog, className }: BlogDetailsCardProps) => {
           <span>
             {blog.views} {blog.views === 1 ? "View" : "Views"}
           </span>
-         
         </div>
       </CardHeader>
       <CardContent>
@@ -133,7 +130,7 @@ const BlogDetailsCard = ({ blog, className }: BlogDetailsCardProps) => {
             <div className="flex flex-wrap gap-2">
               {blog.tags.map((tag, index) => (
                 <Badge key={index} variant="outline">
-                  {tag.name ?? tag}
+                  {tag ?? tag}
                 </Badge>
               ))}
             </div>
@@ -148,30 +145,14 @@ const BlogDetailsCard = ({ blog, className }: BlogDetailsCardProps) => {
               {blog.galleries.map((gallery, index) => (
                 <Image
                   key={index}
-                  src={gallery.url ?? "/placeholder.png"}
-                  alt={gallery.alt ?? `Gallery image ${index + 1}`}
+                  src={gallery ?? "/placeholder.png"}
+                  alt="Gallery Image"
                   width={300}
                   height={200}
                   className="object-cover rounded-md"
                 />
               ))}
             </div>
-          </div>
-        )}
-
-        {/* Comments */}
-        {blog.comments.length > 0 && (
-          <div className="mt-6">
-            <h3 className="text-lg font-semibold">Comments</h3>
-            {blog.comments.map((comment, index) => (
-              <div key={index} className="border-t py-4">
-                <p className="text-sm">{comment.content ?? "No content"}</p>
-                <p className="text-xs text-muted-foreground">
-                  By {comment.authorName ?? "Anonymous"} on{" "}
-                  {formatDate(comment.createdAt ?? blog.createdAt)}
-                </p>
-              </div>
-            ))}
           </div>
         )}
 

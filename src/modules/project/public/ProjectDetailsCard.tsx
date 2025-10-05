@@ -29,7 +29,7 @@ interface Project {
       name: string;
     };
   }>;
-  galleries: Array<any>;
+  galleries: Array<string | null>;
 }
 
 interface ProjectDetailsCardProps {
@@ -135,8 +135,8 @@ const ProjectDetailsCard = ({
               {project.galleries.map((gallery, index) => (
                 <Image
                   key={index}
-                  src={gallery.url ?? "/placeholder.png"}
-                  alt={gallery.alt ?? `Gallery image ${index + 1}`}
+                      src={gallery ?? "/placeholder.png"}
+                        alt="Gallery Image"
                   width={300}
                   height={200}
                   className="object-cover rounded-md"

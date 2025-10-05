@@ -1,6 +1,5 @@
 import CheckAuth from "@/modules/shared/CheckAuth";
 import Footer from "@/modules/shared/Footer";
-import { Navbar } from "@/modules/shared/Navbar";
 
 const PublicLayout = ({
   children,

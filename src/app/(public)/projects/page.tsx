@@ -22,9 +22,19 @@ const ProjectPage = async () => {
       <h1 className="my-5">Projects</h1>
       <div className="grid grid-cols-3 gap-4 mb-6">
         {projects &&
-          projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+          projects.map(
+            (project: {
+              id: number;
+              title: string;
+              slug: string;
+              description: string;
+              poster: string;
+              excerpt: string;
+              views: number;
+              createdAt: string;
+              updatedAt: string;
+            }) => <ProjectCard key={project.id} project={project} />
+          )}
       </div>
     </div>
   );

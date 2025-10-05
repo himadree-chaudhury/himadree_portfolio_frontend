@@ -17,9 +17,10 @@ import { Input } from "@/components/ui/input";
 import { FileMetadata } from "@/hooks/use-file-upload";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Trash2Icon } from "lucide-react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "sonner";
 import z from "zod";
 import Tiptap from "../blog/Tiptap";
 
@@ -140,18 +141,18 @@ const projectSchema = z.object({
 const CreateProject = () => {
   const [poster, setPoster] = useState<(File | FileMetadata) | null>(null);
   const [galleries, setGalleries] = useState<(File | FileMetadata)[] | []>([]);
-  const router = useRouter();
-
+  
   const form = useForm<z.infer<typeof projectSchema>>({
-    resolver: zodResolver(projectSchema),
-    defaultValues: {
-      title: "",
-      description: "",
-      excerpt: "",
-      links: [],
-      technologies: [],
-    },
-  });
+      resolver: zodResolver(projectSchema),
+      defaultValues: {
+          title: "",
+          description: "",
+          excerpt: "",
+          links: [],
+          technologies: [],
+        },
+    });
+    const router = useRouter();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const projectData = {
@@ -165,6 +166,7 @@ const CreateProject = () => {
     });
 
     try {
+      const toastId = toast.loading("Creating project...");
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_API}/project/create`,
         {
@@ -174,12 +176,13 @@ const CreateProject = () => {
         }
       );
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Failed to create project");
+        toast.error("Failed to create project", { id: toastId });
       }
+      toast.success("Project created successfully", { id: toastId });
       router.push("/projects");
     } catch (error) {
-      console.error("Error creating project:", error);
+        toast.error("An error occurred while creating the project");
+        console.error("Error creating project:", error);
     }
   };
 

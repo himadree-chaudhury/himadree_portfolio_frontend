@@ -1,6 +1,5 @@
 import About from "@/modules/Home/About";
 import Contact from "@/modules/Home/Contact";
-import FeaturedProjects from "@/modules/Home/FeaturedProjects";
 import Hero from "@/modules/Home/Hero";
 import Services from "@/modules/Home/Services";
 import TechStack from "@/modules/Home/TechStack";
@@ -12,7 +11,7 @@ const Home = () => {
       <Hero />
       <TechStack />
       <About />
-      <FeaturedProjects />
+      {/* <FeaturedProjects /> */}
       <Services />
       <Contact />
       <Testimonials />

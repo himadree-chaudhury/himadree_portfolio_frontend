@@ -65,7 +65,7 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="space-y-4">
             <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Your Name
+              Himadree Chaudhury
             </h3>
             <p className="dark:text-slate-400 text-sm leading-relaxed">
               Full Stack Developer passionate about creating elegant solutions

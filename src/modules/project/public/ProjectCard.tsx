@@ -1,8 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
-export default function ProjectCard({ project }: { project: any }) {
+export default function ProjectCard({
+  project,
+}: {
+  project: {
+    title: string;
+    slug: string;
+    description: string;
+    poster: string;
+    excerpt: string;
+    views: number;
+  };
+}) {
   return (
     <Link
       href={`/projects/${project.slug}`}
