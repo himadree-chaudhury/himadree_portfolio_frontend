@@ -35,14 +35,14 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
-import { ModeToggle } from "@/modules/Dashboard/Sidebar/ModeToggle";
+import { ModeToggle } from "@/modules/shared/ModeToggle";
 import {
   ChevronDownIcon,
   FileTextIcon,
   GlobeIcon,
   HomeIcon,
   LayersIcon,
-  UsersIcon,
+  RssIcon,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -164,7 +164,6 @@ export interface NavbarProps extends React.HTMLAttributes<HTMLElement> {
   userAvatar?: string;
   onNavItemClick?: (href: string) => void;
   onLanguageChange?: (language: string) => void;
-  onThemeChange?: (theme: "light" | "dark") => void;
   onUserItemClick?: (item: string) => void;
 }
 
@@ -172,8 +171,8 @@ export interface NavbarProps extends React.HTMLAttributes<HTMLElement> {
 const defaultNavigationLinks: NavbarNavItem[] = [
   { href: "/", label: "Home", icon: HomeIcon },
   { href: "/projects", label: "Projects", icon: LayersIcon },
-  { href: "/blogs", label: "Blogs", icon: FileTextIcon },
-  { href: "/case-studies", label: "Case-Studies", icon: UsersIcon },
+  { href: "/blogs", label: "Blogs", icon: RssIcon },
+  { href: "/case-studies", label: "Case-Studies", icon: FileTextIcon },
 ];
 
 // Default language options
@@ -197,7 +196,6 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
       userAvatar,
       onNavItemClick,
       onLanguageChange,
-      onThemeChange,
       onUserItemClick,
       ...props
     },

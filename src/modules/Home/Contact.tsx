@@ -2,15 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Github,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-  Send,
-  Twitter,
-} from "lucide-react";
+import { Send } from "lucide-react";
 import React, { useState } from "react";
 
 export default function Contact() {
@@ -36,41 +28,6 @@ export default function Contact() {
     console.log("Form submitted:", formData);
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: "Email",
-      value: "your.email@example.com",
-      link: "mailto:your.email@example.com",
-    },
-    {
-      icon: Phone,
-      title: "Phone",
-      value: "+880 1234-567890",
-      link: "tel:+8801234567890",
-    },
-    {
-      icon: MapPin,
-      title: "Location",
-      value: "Chattogram, Bangladesh",
-      link: "#",
-    },
-  ];
-
-  const socialLinks = [
-    { icon: Github, url: "https://github.com/yourusername", label: "GitHub" },
-    {
-      icon: Linkedin,
-      url: "https://linkedin.com/in/yourusername",
-      label: "LinkedIn",
-    },
-    {
-      icon: Twitter,
-      url: "https://twitter.com/yourusername",
-      label: "Twitter",
-    },
-  ];
-
   return (
     <section className="py-20">
       <div className="container mx-auto px-4">
@@ -80,7 +37,7 @@ export default function Contact() {
             Get In Touch
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Have a project in mind? Let's discuss how I can help bring your
+            Have a project in mind? Lets discuss how I can help bring your
             ideas to life
           </p>
         </div>

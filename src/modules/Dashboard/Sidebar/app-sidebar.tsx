@@ -2,31 +2,26 @@
 
 import {
   BookOpen,
-  Bot,
-  Command,
-  Frame,
-  LifeBuoy,
-  Map,
   PieChart,
-  Send,
-  Settings2,
+  RssIcon,
   SquareTerminal,
+  User,
 } from "lucide-react";
 import * as React from "react";
 
+import Logo from "@/assets/logos/himadree-logo.svg";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { NavMain } from "@/modules/Dashboard/Sidebar/nav-main";
-import { NavProjects } from "@/modules/Dashboard/Sidebar/nav-projects";
-import { NavSecondary } from "@/modules/Dashboard/Sidebar/nav-secondary";
-import { NavUser } from "@/modules/Dashboard/Sidebar/nav-user";
+import { NavPlatform } from "@/modules/Dashboard/Sidebar/nav-platform";
+import Image from "next/image";
+import Link from "next/link";
 
 const data = {
   user: {
@@ -36,120 +31,83 @@ const data = {
   },
   navMain: [
     {
-      title: "Playground",
+      title: "Projects",
       url: "#",
       icon: SquareTerminal,
       isActive: true,
       items: [
         {
-          title: "History",
+          title: "Manage",
           url: "#",
         },
         {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
+          title: "Create",
+          url: "/dashboard/projects/create",
         },
       ],
     },
     {
-      title: "Models",
+      title: "Blogs",
       url: "#",
-      icon: Bot,
+      isActive: true,
+      icon: RssIcon,
       items: [
         {
-          title: "Genesis",
+          title: "Manage",
           url: "#",
         },
         {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
+          title: "Create",
+          url: "/dashboard/blog/create",
         },
       ],
     },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
+    // {
+    //   title: "Case-Studies",
+    //   url: "#",
+    //   icon: BookOpen,
+    //   items: [
+    //     {
+    //       title: "Manage",
+    //       url: "#",
+    //     },
+    //     {
+    //       title: "Create",
+    //       url: "#",
+    //     },
+    //   ],
+    // },
+    // {
+    //   title: "Users",
+    //   url: "#",
+    //   icon: User,
+    //   items: [
+    //     {
+    //       title: "Manage",
+    //       url: "#",
+    //     },
+    //   ],
+    // },
   ],
-  navSecondary: [
-    {
-      title: "Support",
-      url: "#",
-      icon: LifeBuoy,
-    },
-    {
-      title: "Feedback",
-      url: "#",
-      icon: Send,
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ],
+  // navSecondary: [
+  //   {
+  //     title: "Support",
+  //     url: "#",
+  //     icon: LifeBuoy,
+  //   },
+  //   {
+  //     title: "Feedback",
+  //     url: "#",
+  //     icon: Send,
+  //   },
+  // ],
+  // Platform: [
+  //   {
+  //     name: "Statistics",
+  //     url: "#",
+  //     icon: PieChart,
+  //   },
+  // ],
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -159,27 +117,32 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="#">
-                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <Command className="size-4" />
+              <Link href="/">
+                <div className="flex aspect-square size-8 items-center justify-center rounded-lg">
+                  <Image
+                    src={Logo}
+                    alt="Himadree Chaudhury"
+                    width={48}
+                    height={48}
+                  />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">Acme Inc</span>
-                  <span className="truncate text-xs">Enterprise</span>
+                  <span className="truncate font-medium">Dashboard</span>
+                  <span className="truncate text-xs">Himadree Chaudhury</span>
                 </div>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        {/* <NavPlatform platform={data.Platform} /> */}
+        {/* <NavSecondary items={data.navSecondary} className="mt-auto" /> */}
       </SidebarContent>
-      <SidebarFooter>
+      {/* <SidebarFooter>
         <NavUser user={data.user} />
-      </SidebarFooter>
+      </SidebarFooter> */}
     </Sidebar>
   );
 }

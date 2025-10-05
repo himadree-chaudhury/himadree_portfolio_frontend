@@ -5,7 +5,6 @@ interface Testimonial {
   name: string;
   role: string;
   company: string;
-  image: string;
   testimonial: string;
   rating: number;
 }
@@ -16,7 +15,6 @@ export default function Testimonials() {
       name: "Sarah Johnson",
       role: "CEO",
       company: "TechStart Inc.",
-      image: "/testimonials/sarah.jpg",
       testimonial:
         "Working with this developer was an absolute pleasure. The attention to detail and commitment to delivering quality work exceeded our expectations. Our project was completed on time and within budget.",
       rating: 5,
@@ -25,7 +23,6 @@ export default function Testimonials() {
       name: "Michael Chen",
       role: "Product Manager",
       company: "Digital Solutions",
-      image: "/testimonials/michael.jpg",
       testimonial:
         "Exceptional technical skills combined with great communication. The developer understood our requirements perfectly and delivered a solution that transformed our business processes.",
       rating: 5,
@@ -34,7 +31,6 @@ export default function Testimonials() {
       name: "Emily Rodriguez",
       role: "Founder",
       company: "StartupHub",
-      image: "/testimonials/emily.jpg",
       testimonial:
         "Incredible work ethic and problem-solving abilities. They tackled complex challenges with ease and provided innovative solutions. Highly recommend for any web development project.",
       rating: 5,
@@ -43,7 +39,6 @@ export default function Testimonials() {
       name: "David Thompson",
       role: "CTO",
       company: "Innovation Labs",
-      image: "/testimonials/david.jpg",
       testimonial:
         "A true professional who brings both technical expertise and creative thinking to every project. The quality of code and architectural decisions made were outstanding.",
       rating: 5,
@@ -52,7 +47,6 @@ export default function Testimonials() {
       name: "Lisa Wang",
       role: "Marketing Director",
       company: "Growth Co.",
-      image: "/testimonials/lisa.jpg",
       testimonial:
         "The developer's ability to translate our vision into reality was impressive. They provided valuable insights and suggestions that improved the final product significantly.",
       rating: 5,
@@ -61,7 +55,6 @@ export default function Testimonials() {
       name: "James Miller",
       role: "Business Owner",
       company: "Miller Enterprises",
-      image: "/testimonials/james.jpg",
       testimonial:
         "Professional, reliable, and skilled. The project was delivered ahead of schedule with exceptional quality. Will definitely work together on future projects.",
       rating: 5,
@@ -77,7 +70,7 @@ export default function Testimonials() {
             Client Testimonials
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Don't just take my word for it - hear what my clients have to say
+            Dont just take my word for it - hear what my clients have to say
           </p>
         </div>
 
@@ -107,14 +100,14 @@ export default function Testimonials() {
 
                 {/* Testimonial Text */}
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                  "{testimonial.testimonial}"
+                  {testimonial.testimonial}
                 </p>
 
                 {/* Client Info */}
                 <div className="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center overflow-hidden">
                     <img
-                      src={testimonial.image}
+                      src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
                       alt={testimonial.name}
                       className="w-full h-full object-cover"
                     />

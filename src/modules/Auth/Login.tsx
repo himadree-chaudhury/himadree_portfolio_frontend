@@ -10,10 +10,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
 import { IResponseError } from "@/types/response.type";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
@@ -24,10 +24,7 @@ const loginSchema = z.object({
   password: z.string().min(1, "Please enter a password"),
 });
 
-export function Login({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+export function Login() {
   // *Form type check-up via Zod & setting default values
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -37,7 +34,7 @@ export function Login({
     },
   });
 
-  //   const from = location.state?.from?.pathname || "/home";
+ const router = useRouter();
 
   // *Form submission handler
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -49,10 +46,11 @@ export function Login({
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
+          credentials: "include",
         }
-        );
-        console.log(response);
+      );
       toast.success("User logged in successfully", { id: toastId });
+      router.push("/dashboard");
     } catch (error: unknown) {
       const err = (error as unknown as { data: IResponseError }).data;
       toast.error(`${err.status}: ${err.message}`, { id: toastId });
@@ -60,7 +58,7 @@ export function Login({
   };
 
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
+    <div className={"flex flex-col gap-6"}>
       <div className="grid gap-6">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">

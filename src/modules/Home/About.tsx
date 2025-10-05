@@ -28,13 +28,6 @@ export default function About() {
     },
   ];
 
-  const achievements = [
-    { number: "5+", label: "Years of Experience" },
-    { number: "50+", label: "Projects Completed" },
-    { number: "30+", label: "Happy Clients" },
-    { number: "15+", label: "Technologies Mastered" },
-  ];
-
   return (
     <section className="py-20">
       <div className="container mx-auto px-4">
@@ -50,7 +43,7 @@ export default function About() {
 
             <div className="space-y-4 text-slate-600 dark:text-slate-400">
               <p className="text-lg leading-relaxed">
-                I'm a passionate full-stack developer with over 5 years of
+                Im a passionate full-stack developer with over 5 years of
                 experience in building web applications. I specialize in
                 creating seamless user experiences and robust backend systems.
               </p>
@@ -61,7 +54,7 @@ export default function About() {
                 the latest technologies.
               </p>
               <p className="text-lg leading-relaxed">
-                When I'm not coding, you can find me contributing to open-source
+                When Im not coding, you can find me contributing to open-source
                 projects, writing technical blog posts, or mentoring aspiring
                 developers.
               </p>

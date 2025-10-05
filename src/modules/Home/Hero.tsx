@@ -1,6 +1,6 @@
 import Profile from "@/assets/images/himadree-chaudhury.png";
 import { Button } from "@/components/ui/button";
-import { Download, Mail } from "lucide-react";
+import { Download } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
@@ -20,7 +20,7 @@ const Hero = () => {
               </div>
 
               <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight">
-                Hi, I'm{" "}
+                Hi, Im{" "}
                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                   Himadree Chaudhury
                 </span>
